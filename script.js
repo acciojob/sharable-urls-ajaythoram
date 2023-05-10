@@ -6,7 +6,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   btn.addEventListener("click", (event) => {
     event.preventDefault();
-    H.innerText = `https://localhost:8080/?name=${txt.value}&year=${num.value}`;
+  let queryString = "";
+  if (txt.value) {
+    queryString += `name=${txt.value}`;
+  }
+  if (num.value) {
+    queryString += `${queryString ? '&' : ''}year=${num.value}`;
+  }
+  H.innerText = `https://localhost:8080/?${queryString}`;
   });
 });
 
